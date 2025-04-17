@@ -1,0 +1,24 @@
+.partner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  & .partnerText {
+    text-align: center;
+    width: 70%;
+    background: linear-gradient(
+        90deg,
+        rgb(249, 69, 63),
+        rgb(250, 155, 38) 22.5%,
+        rgb(46, 231, 111) 45%,
+        rgb(24, 225, 243) 67.5%,
+        rgb(63, 0, 133) 90%
+      )
+      0% 0% / 400% 100% text;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    transform: translate3d(0px, 28.3256%, 0px) scale(0.8867, 0.8867);
+    background-position-x: 15.9919%;
+    transform-origin: 564.008px 125.449px;
+  }
+}

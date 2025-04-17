@@ -1,0 +1,75 @@
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  height: 40px;
+  width: 100%;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  background-color: transparent;
+
+  &--primary {
+    color: #05c2ff;
+    background-color: hsla(0, 0%, 100%, 0.102);
+  }
+  &--secondary {
+    background-color: white;
+    color: #131bff;
+
+    &:active {
+      background-color: #131bff;
+      color: white;
+    }
+  }
+  &--dark {
+    color: white;
+    background-color: #131bff;
+
+    &:active {
+      background-color: #131bff;
+      color: white;
+    }
+  }
+  &--tertiary {
+    color: #000;
+    border: 1px solid black;
+    width: fit-content;
+    padding: 20px 30px;
+  }
+  &--gradient {
+    color: #fff;
+    border: 1px solid black;
+    width: fit-content;
+    padding: 20px 30px;
+  }
+}
+.btnGradient {
+  background: linear-gradient(
+      90deg,
+      rgb(249, 69, 63),
+      rgb(250, 155, 38) 12.5%,
+      rgb(46, 231, 111) 25%,
+      rgb(24, 225, 243) 37.5%,
+      rgb(63, 0, 133) 50%,
+      rgb(24, 225, 243) 62.5%,
+      rgb(46, 231, 111) 75%,
+      rgb(250, 155, 38) 87.5%,
+      rgb(249, 69, 63)
+    )
+    0px 50% / 200% 100%;
+  background-position: 0px 50%;
+  border: 2px solid transparent;
+  border-radius: 25px;
+  width: 100%;
+
+  & .btn {
+    background-color: #0a0d3a;
+    border-radius: 25px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    padding: 15px 0;
+  }
+}

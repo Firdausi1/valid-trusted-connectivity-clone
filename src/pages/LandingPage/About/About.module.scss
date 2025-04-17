@@ -1,0 +1,12 @@
+.about {
+  & .statsContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+  }
+  & .stats{
+    display: flex;
+    gap: 150px;
+  }
+}

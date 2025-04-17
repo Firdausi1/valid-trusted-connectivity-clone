@@ -1,0 +1,42 @@
+.solutionCard {
+  width: 500px;
+
+  &--purple {
+    background-color: #c189ff;
+  }
+  &--teal {
+    background-color: #18e1f3;
+  }
+  &--green {
+    background-color: #2ee76f;
+  }
+  &--orange {
+    background-color: #fa9b26;
+  }
+}
+.cardTop {
+  color: black;
+  padding: 5vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 50vw;
+  height: 378px;
+
+  & h3 {
+    margin-bottom: 20px;
+  }
+
+  & .btnContainer {
+    display: flex;
+    margin-top: 30px;
+    gap: 20px;
+  }
+}
+.cardBottom {
+  width: 100%;
+
+  & img {
+    width: 100%;
+  }
+}
