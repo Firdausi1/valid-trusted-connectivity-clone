@@ -37,13 +37,14 @@ const About = () => {
   const smoothProgress = useSpring(scrollYProgress, {
     damping: 20,
     stiffness: 100,
+    mass: 1,
   });
 
-  const scale = useTransform(smoothProgress, [0, 0.8], [1, 30]);
+  const scale = useTransform(smoothProgress, [0, 0.8], [1, 50]);
   const opacity = useTransform(smoothProgress, [0.3, 0.8], [1, 0]);
 
-  const imageProgress = useTransform(smoothProgress, [0, 0.95, 1], [0, 50, 60]);
-  const translateY = useTransform(smoothProgress, [0.8, 1], [100, 0]);
+  const imageProgress = useTransform(smoothProgress, [0.35, 1], [0, 84]);
+  const translateY = useTransform(smoothProgress, [0.8, 1], [500, 0]);
   const aboutOpacity = useTransform(smoothProgress, [0.8, 1], [0, 1]);
 
   useEffect(() => {
@@ -59,7 +60,7 @@ const About = () => {
 
   useEffect(() => {
     const preloadImages = () => {
-      for (let i = 1; i <= 60; i++) {
+      for (let i = 1; i <= 84; i++) {
         const img = new Image();
         img.src = `/frames/frame-${String(i).padStart(3, "0")}.jpg`;
       }
@@ -81,16 +82,15 @@ const About = () => {
           Your truste<span ref={dRef}>d</span>&nbsp;partner for secure and
           interoperable mobile services
         </motion.h1>
-        <div className={styles.frame}>
-          <img
-            src={`/frames/frame-${String(frame + 1).padStart(3, "0")}.jpg`}
+        <motion.div className={styles.frame}>
+          <motion.img
+            src={`/frames/frame-${String(frame + 1).padStart(3, "0")}.webp`}
             style={{
-              transition: "opacity 0.1s",
               willChange: "opacity",
             }}
             alt={`Frame ${frame + 1}`}
           />
-        </div>
+        </motion.div>
         <motion.div
           initial={{ visibility: "hidden" }}
           animate={{ visibility: "visible" }}

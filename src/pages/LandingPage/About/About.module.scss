@@ -1,5 +1,5 @@
 .partnerContainer {
-  min-height: 700vh;
+  min-height: 8500px;
   position: relative;
 
   & .partner {
@@ -39,11 +39,11 @@
       height: 100%;
       overflow: hidden;
       z-index: 0;
-
       & img {
         position: absolute;
         width: 100%;
         height: 100%;
+        object-fit: cover;
       }
     }
     & .about {
