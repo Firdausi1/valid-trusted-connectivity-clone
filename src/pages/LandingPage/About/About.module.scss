@@ -72,3 +72,40 @@
     }
   }
 }
+
+.aboutMobile {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px 0;
+
+  & .aboutText {
+    margin: 50px 0;
+    text-align: center;
+    width: 80%;
+    font-size: 57px;
+    background: linear-gradient(
+        90deg,
+        rgb(249, 69, 63),
+        rgb(250, 155, 38) 22.5%,
+        rgb(46, 231, 111) 45%,
+        rgb(24, 225, 243) 67.5%,
+        rgb(63, 0, 133) 90%
+      )
+      0% 0% / 400% 100% text;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+  }
+  & .statsContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  & .stats {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+  }
+}

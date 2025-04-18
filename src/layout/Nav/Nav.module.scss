@@ -11,7 +11,7 @@
   left: 0;
   width: 100%;
   position: fixed;
-  transition: all .5s ease-in-out;
+  transition: all 0.5s ease-in-out;
   z-index: 99;
   & .logo {
     flex: 2;
@@ -38,6 +38,38 @@
     justify-content: flex-end;
     & .btn {
       width: 40%;
+    }
+  }
+
+  & .menu {
+    display: none;
+  }
+  @media (max-width: 599px) {
+    padding-left: 20px;
+    padding-right: 20px;
+    .logo {
+      display: inline-block;
+
+      & svg {
+        width: 100px;
+        height: auto;
+      }
+    }
+    .navList {
+      display: none;
+    }
+    .btnContainer {
+      display: none;
+    }
+    & .menu {
+      display: block;
+      cursor: pointer;
+      background-color: #efefef61;
+      padding: 10px 13px;
+      border-radius: 10px;
+      position: fixed;
+      right: 50px;
+      z-index: 100;
     }
   }
 }

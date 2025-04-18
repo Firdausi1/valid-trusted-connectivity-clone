@@ -31,16 +31,33 @@
     & .solutionCards {
       display: flex;
       width: 200vw;
-
-      // & > div:nth-child(2) {
-      //   transform: translateY(100px);
-      // }
-      // & > div:nth-child(3) {
-      //   transform: translateY(150px);
-      // }
-      // & > div:nth-child(4) {
-      //   transform: translateY(200px);
-      // }
+    }
+  }
+  @media (max-width: 599px) {
+    padding-top: 20px;
+    & .solutionTextContainer {
+      justify-content: flex-start;
+      padding-right: 0px;
+      padding: 20px;
+      margin-bottom: 40px;
+      & .solutionText {
+        width: 100%;
+      }
+    }
+    & .solutionCardsContainer {
+      height: 800vh;
+      position: relative;
+      & .check {
+        position: sticky;
+        top: 0;
+        overflow: hidden;
+        height: 100vh;
+      }
+  
+      & .solutionCards {
+        display: flex;
+        width: 200vw;
+      }
     }
   }
 }

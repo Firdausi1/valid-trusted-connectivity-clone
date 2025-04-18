@@ -3,6 +3,7 @@ import styles from "./About.module.scss";
 import { useTransform, motion, useScroll, useSpring } from "framer-motion";
 import SectionHeader from "src/compnents/custom/SectionHeader/SectionHeader";
 import AboutStats from "src/compnents/custom/AboutStats/AboutStats";
+import { useIsMobile } from "src/utils/useMobile";
 
 const stats = [
   {
@@ -23,6 +24,7 @@ const About = () => {
   const containerRef = useRef(null);
   const dRef = useRef(null);
   const [frame, setFrame] = useState(0);
+  const isMobile = useIsMobile();
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -68,6 +70,30 @@ const About = () => {
     preloadImages();
   }, []);
 
+  if (isMobile) {
+    return (
+      <div className={styles.aboutMobile}>
+        <h1 className={styles.aboutText}>
+          Your trusted partner for secure and interoperable mobile services
+        </h1>
+        <div>
+          <SectionHeader
+            title="About us"
+            text="We offer trusted connectivity solutions to device makers, connectivity providers and IoT players worldwide"
+            buttonText="More about us"
+          />
+          <div className={styles.statsContainer}>
+            <div className={styles.stats}>
+              {stats.map((item, index) => (
+                <AboutStats text={item.text} title={item.title} key={index} />
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className={styles.partnerContainer} ref={containerRef}>
       <div className={styles.partner}>
@@ -84,6 +110,8 @@ const About = () => {
         </motion.h1>
         <motion.div className={styles.frame}>
           <motion.img
+            initial={{ visibility: "hidden" }}
+            animate={{ visibility: "visible" }}
             src={`/frames/frame-${String(frame + 1).padStart(3, "0")}.webp`}
             style={{
               willChange: "opacity",

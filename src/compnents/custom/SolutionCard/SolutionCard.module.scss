@@ -31,6 +31,10 @@
       color: #fa9b26;
     }
   }
+  @media (max-width: 599px) {
+   max-width: 100vw;
+   width: 100%;
+  }
 }
 .cardTop {
   color: black;
@@ -49,6 +53,9 @@
     display: flex;
     margin-top: 30px;
     gap: 20px;
+  }
+  @media (max-width: 599px) {
+   width: 100%;
   }
 }
 .cardBottom {

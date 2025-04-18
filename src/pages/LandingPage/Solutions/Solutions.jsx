@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./Solutions.module.scss";
 import SolutionCard from "src/compnents/custom/SolutionCard/SolutionCard";
 import sim from "../../../assets/images/sim.jpg";
@@ -6,6 +6,7 @@ import esim from "../../../assets/images/esim.jpg";
 import esimSolution from "../../../assets/images/esim solution.jpg";
 import fiveG from "../../../assets/images/5G.jpg";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { useIsMobile } from "src/utils/useMobile";
 
 const solutions = [
   {
@@ -43,6 +44,14 @@ const solutions = [
 
 const Solutions = () => {
   const sectionRef = useRef();
+  const [viewerWidth, setWidth] = useState("-100vw");
+  const isMobile = useIsMobile();
+
+  useEffect(() => {
+    if (isMobile) {
+      setWidth("-300vw");
+    }
+  }, [isMobile]);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -52,7 +61,7 @@ const Solutions = () => {
   const y3 = useTransform(scrollYProgress, [0, 1], ["150px", "0px"]);
   const y4 = useTransform(scrollYProgress, [0, 1], ["200px", "0px"]);
 
-  const x = useTransform(scrollYProgress, [0, 1], ["0vw", `-100vw`]);
+  const x = useTransform(scrollYProgress, [0, 1], ["0vw", viewerWidth]);
 
   return (
     <div className={styles.solutionContainer}>
@@ -100,7 +109,12 @@ const Solutions = () => {
       </div>
       <div ref={sectionRef} className={styles.solutionCardsContainer}>
         <div className={styles.check}>
-          <motion.div style={{ x }} className={styles.solutionCards}>
+          <motion.div
+            style={{ x }}
+            className={styles.solutionCards}
+            animate={isMobile && false}
+            initial={isMobile && false}
+          >
             {solutions.map((item, i) => {
               const style =
                 i === 1 ? y2 : i === 2 ? y3 : i === 3 ? y4 : undefined;

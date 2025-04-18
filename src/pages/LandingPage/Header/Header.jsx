@@ -1,11 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./Header.module.scss";
 import Button from "src/compnents/ui/Button/Button";
 import Lenis from "@studio-freight/lenis";
 import classNames from "classnames";
+import { useScroll, useTransform, motion } from "framer-motion";
 
 const Header = () => {
   const [transitionColor, setTransitionColor] = useState("20.1711%");
+  const ref = useRef();
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end end"],
+  });
+
+  const backgroundPosition = useTransform(
+    scrollYProgress,
+    [0, 0.8],
+    ["11.9919%", "100%"]
+  );
+
   useEffect(() => {
     const lenis = new Lenis();
     function raf(time) {
@@ -38,13 +51,14 @@ const Header = () => {
           />
           Your browser does not support the video tag.
         </video>
-        <div className={styles.heading}>
-          <h1
+        <div className={styles.heading} ref={ref}>
+          <motion.h1
             className={classNames([styles.gradientText])}
-            style={{ "backgroundPositionX": transitionColor }}
+            // style={{ backgroundPositionX: transitionColor }}
+            style={{ backgroundPosition }}
           >
             Empowering
-          </h1>
+          </motion.h1>
           <div className={styles.headerText}>
             <div className={styles.btn}>
               <Button text="Talk to our experts" color="secondary" />
@@ -52,6 +66,9 @@ const Header = () => {
             <h1 className={styles.text2}>seamless</h1>
           </div>
           <h1 className={styles.text3}>connectivity</h1>
+          <div className={styles.btnMobile}>
+            <Button text="Talk to our experts" color="secondary" />
+          </div>
         </div>
       </div>
       <div className={styles.gradientBackground}></div>

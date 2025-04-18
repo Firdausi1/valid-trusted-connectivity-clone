@@ -18,4 +18,9 @@
   & .btn {
     width: 30%;
   }
+
+  @media (max-width: 599px) {
+    height: 100%;
+    padding: 2px;
+  }
 }

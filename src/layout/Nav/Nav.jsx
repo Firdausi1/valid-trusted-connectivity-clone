@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import Button from "src/compnents/ui/Button/Button";
 import styles from "./Nav.module.scss";
+import { AiOutlineUnorderedList } from "react-icons/ai";
 
 const NavLinks = [
   {
@@ -118,6 +119,9 @@ const Nav = () => {
         <div className={styles.btn}>
           <Button text="Talk to our experts" color="primary" />
         </div>
+      </div>
+      <div className={styles.menu}>
+        <AiOutlineUnorderedList color="#fff" />
       </div>
     </div>
   );
