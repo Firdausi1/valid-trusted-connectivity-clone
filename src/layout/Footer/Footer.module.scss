@@ -1,6 +1,7 @@
 .footerContainer {
   background-color: white;
   padding-top: 100px;
+  overflow: hidden;
 
   & .scrollText {
     font-size: 150px;
@@ -74,7 +75,6 @@
   }
   @media (max-width: 599px) {
     // display: none;
-    overflow: hidden;
     padding-top: 50px;
 
     & .scrollText {
