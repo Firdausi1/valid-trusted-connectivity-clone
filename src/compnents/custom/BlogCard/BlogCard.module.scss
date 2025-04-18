@@ -42,4 +42,10 @@
       border-bottom-right-radius: 15px;
     }
   }
+  @media (max-width: 599px) {
+    height: 80vh;
+    & .blogTop {
+      clip-path: polygon(100% 0, 100% 68%, 50% 70%, 0 68%, 0 0);
+    }
+  }
 }

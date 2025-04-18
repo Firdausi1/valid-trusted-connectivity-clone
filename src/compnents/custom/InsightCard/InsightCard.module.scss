@@ -49,4 +49,7 @@
 
 .topCard {
   height: 100vh;
+  @media (max-width: 599px) {
+    height: 80vh
+  }
 }

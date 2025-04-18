@@ -46,6 +46,7 @@ const Header = () => {
       <div className={styles.header}>
         <video autoPlay muted loop>
           <source
+            controls="false"
             src="https://trustedconnectivity.valid.com/wp-content/uploads/2024/11/Hero-valid.mp4"
             type="video/mp4"
           />
@@ -66,9 +67,9 @@ const Header = () => {
             <h1 className={styles.text2}>seamless</h1>
           </div>
           <h1 className={styles.text3}>connectivity</h1>
-          <div className={styles.btnMobile}>
-            <Button text="Talk to our experts" color="secondary" />
-          </div>
+        </div>
+        <div className={styles.btnMobile}>
+          <Button text="Talk to our experts" color="secondary" />
         </div>
       </div>
       <div className={styles.gradientBackground}></div>

@@ -73,7 +73,8 @@
     }
   }
   @media (max-width: 599px) {
-    display: none;
+    // display: none;
+    overflow: hidden;
     padding-top: 50px;
 
     & .scrollText {
@@ -119,6 +120,7 @@
           flex-direction: column;
           justify-content: flex-start;
           font-size: 12px;
+          margin-bottom: 30px;
         }
   
         & .social {
