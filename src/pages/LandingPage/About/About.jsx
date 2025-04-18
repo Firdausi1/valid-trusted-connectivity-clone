@@ -31,8 +31,8 @@ const About = () => {
 
   const backgroundPosition = useTransform(
     scrollYProgress,
-    ["15.9919%", "0%"],
-    ["25%", "0%"]
+    [0, 0.8],
+    ["11.9919%", "100%"]
   );
   const smoothProgress = useSpring(scrollYProgress, {
     damping: 20,
