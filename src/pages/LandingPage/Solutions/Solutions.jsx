@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useRef } from "react";
 import styles from "./Solutions.module.scss";
 import SolutionCard from "src/compnents/custom/SolutionCard/SolutionCard";
 import sim from "../../../assets/images/sim.jpg";
 import esim from "../../../assets/images/esim.jpg";
 import esimSolution from "../../../assets/images/esim solution.jpg";
 import fiveG from "../../../assets/images/5G.jpg";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 const solutions = [
   {
@@ -41,6 +42,18 @@ const solutions = [
 ];
 
 const Solutions = () => {
+  const sectionRef = useRef();
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end end"],
+  });
+  const y2 = useTransform(scrollYProgress, [0, 1], ["0px", "100px"]);
+  const y3 = useTransform(scrollYProgress, [0, 1], ["150px", "0px"]);
+  const y4 = useTransform(scrollYProgress, [0, 1], ["200px", "0px"]);
+
+  const x = useTransform(scrollYProgress, [0, 1], ["0vw", `-100vw`]);
+
   return (
     <div className={styles.solutionContainer}>
       <div className={styles.solutionTextContainer}>
@@ -67,10 +80,10 @@ const Solutions = () => {
                   y2="8.49998"
                   gradientUnits="userSpaceOnUse"
                 >
-                  <stop stop-color="#191F80"></stop>
-                  <stop offset="0.339518" stop-color="#1A14FA"></stop>
-                  <stop offset="0.679518" stop-color="#3276FB"></stop>
-                  <stop offset="1" stop-color="#21BDFC"></stop>
+                  <stop stopColor="#191F80"></stop>
+                  <stop offset="0.339518" stopColor="#1A14FA"></stop>
+                  <stop offset="0.679518" stopColor="#3276FB"></stop>
+                  <stop offset="1" stopColor="#21BDFC"></stop>
                 </linearGradient>
               </defs>
             </svg>
@@ -85,16 +98,27 @@ const Solutions = () => {
           <h2>through:</h2>
         </div>
       </div>
-      <div className={styles.solutionCards}>
-        {solutions.map((item) => (
-          <SolutionCard
-            title={item.title}
-            text={item.text}
-            button={item.button}
-            color={item.color}
-            image={item.image}
-          />
-        ))}
+      <div ref={sectionRef} className={styles.solutionCardsContainer}>
+        <div className={styles.check}>
+          <motion.div style={{ x }} className={styles.solutionCards}>
+            {solutions.map((item, i) => {
+              const style =
+                i === 1 ? y2 : i === 2 ? y3 : i === 3 ? y4 : undefined;
+              return (
+                <SolutionCard
+                  title={item.title}
+                  text={item.text}
+                  button={item.button}
+                  color={item.color}
+                  image={item.image}
+                  id={i}
+                  key={i}
+                  style={style}
+                />
+              );
+            })}
+          </motion.div>
+        </div>
       </div>
     </div>
   );

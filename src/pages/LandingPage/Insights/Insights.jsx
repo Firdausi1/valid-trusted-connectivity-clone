@@ -1,4 +1,3 @@
-import Button from "src/compnents/ui/Button/Button";
 import styles from "./Insights.module.scss";
 import React from "react";
 import BlogCard from "src/compnents/custom/BlogCard/BlogCard";
@@ -42,8 +41,9 @@ const Insights = () => {
       />
       <div className={styles.insightCards}>
         <BlogCard />
-        {insights.map((item) => (
+        {insights.map((item, index) => (
           <InsightCard
+            key={index}
             topText={item.topText}
             bigText={item.bigText}
             title={item.title}

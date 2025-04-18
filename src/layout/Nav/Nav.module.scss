@@ -10,6 +10,9 @@
   top: 0;
   left: 0;
   width: 100%;
+  position: fixed;
+  transition: all .5s ease-in-out;
+  z-index: 99;
   & .logo {
     flex: 2;
   }

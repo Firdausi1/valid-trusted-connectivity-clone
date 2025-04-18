@@ -17,8 +17,9 @@
   &--secondary {
     background-color: white;
     color: #131bff;
+    height: 50px;
 
-    &:active {
+    &:hover {
       background-color: #131bff;
       color: white;
     }
@@ -27,9 +28,9 @@
     color: white;
     background-color: #131bff;
 
-    &:active {
-      background-color: #131bff;
-      color: white;
+    &:hover {
+      background-color: #fff;
+      color: #131bff;
     }
   }
   &--tertiary {
@@ -46,6 +47,7 @@
   }
 }
 .btnGradient {
+  cursor: pointer;
   background: linear-gradient(
       90deg,
       rgb(249, 69, 63),
@@ -59,10 +61,15 @@
       rgb(249, 69, 63)
     )
     0px 50% / 200% 100%;
-  background-position: 0px 50%;
   border: 2px solid transparent;
   border-radius: 25px;
   width: 100%;
+  animation: animateBackgroundBack 0.3s ease-out;
+  background-position: 0px 50%;
+
+  &:hover {
+    animation: animateBackground 0.3s ease-in forwards;
+  }
 
   & .btn {
     background-color: #0a0d3a;
@@ -71,5 +78,23 @@
     display: flex;
     justify-content: center;
     padding: 15px 0;
+  }
+}
+
+@keyframes animateBackground {
+  0% {
+    background-position: 0px 50%;
+  }
+  100% {
+    background-position: -200px 100%;
+  }
+}
+
+@keyframes animateBackgroundBack {
+  0% {
+    background-position: -200px 100%;
+  }
+  100% {
+    background-position: 0px 50%;
   }
 }

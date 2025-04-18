@@ -1,12 +1,74 @@
-.about {
-  & .statsContainer{
+.partnerContainer {
+  min-height: 700vh;
+  position: relative;
+
+  & .partner {
+    position: sticky;
+    height: 120vh;
+    top: 0;
+    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 50px;
-  }
-  & .stats{
-    display: flex;
-    gap: 150px;
+
+    & .partnerText {
+      text-align: center;
+      width: 70%;
+      background: linear-gradient(
+          90deg,
+          rgb(249, 69, 63),
+          rgb(250, 155, 38) 22.5%,
+          rgb(46, 231, 111) 45%,
+          rgb(24, 225, 243) 67.5%,
+          rgb(63, 0, 133) 90%
+        )
+        0% 0% / 400% 100% text;
+      -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text;
+      transform: translate3d(0px, 28.3256%, 0px) scale(0.8867, 0.8867);
+      transform-origin: 564.008px 125.449px;
+      z-index: 20;
+      line-height: 0.8;
+    }
+
+    & .frame {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+
+      & img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+      }
+    }
+    & .about {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      bottom: 20;
+
+      & .statsContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 100px 0;
+      }
+      & .stats {
+        display: flex;
+        gap: 150px;
+
+        & > div:nth-child(2) {
+          margin-top: 50px;
+        }
+        & > div:nth-child(3) {
+          margin-top: 100px;
+        }
+      }
+    }
   }
 }

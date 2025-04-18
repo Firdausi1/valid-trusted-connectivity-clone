@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./About.module.scss";
+import { useTransform, motion, useScroll, useSpring } from "framer-motion";
 import SectionHeader from "src/compnents/custom/SectionHeader/SectionHeader";
 import AboutStats from "src/compnents/custom/AboutStats/AboutStats";
 
@@ -19,19 +20,98 @@ const stats = [
 ];
 
 const About = () => {
+  const containerRef = useRef(null);
+  const dRef = useRef(null);
+  const [frame, setFrame] = useState(0);
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"],
+  });
+
+  const backgroundPosition = useTransform(
+    scrollYProgress,
+    ["15.9919%", "0%"],
+    ["25%", "0%"]
+  );
+  const smoothProgress = useSpring(scrollYProgress, {
+    damping: 20,
+    stiffness: 100,
+  });
+
+  const scale = useTransform(smoothProgress, [0, 0.6], [1, 60]);
+  const opacity = useTransform(smoothProgress, [0.2, 0.6], [1, 0]);
+
+  const imageProgress = useTransform(smoothProgress, [0, 0.95, 1], [0, 60, 60]);
+  const translateY = useTransform(smoothProgress, [0.8, 1], [100, 0]);
+  const aboutOpacity = useTransform(smoothProgress, [0.8, 1], [0, 1]);
+
+  useEffect(() => {
+    let lastFrame = -1;
+    return imageProgress.on("change", (latest) => {
+      const rounded = Math.round(latest);
+      if (rounded !== lastFrame) {
+        setFrame(rounded);
+        lastFrame = rounded;
+      }
+    });
+  }, [imageProgress]);
+
+  useEffect(() => {
+    const preloadImages = () => {
+      for (let i = 1; i <= 60; i++) {
+        const img = new Image();
+        img.src = `/frames/frame-${String(i).padStart(3, "0")}.jpg`;
+      }
+    };
+    preloadImages();
+  }, []);
+
   return (
-    <div className={styles.about}>
-      <SectionHeader
-        title="About us"
-        text="We offer trusted connectivity solutions to device makers, connectivity providers and IoT players worldwide"
-        buttonText="More about us"
-      />
-      <div className={styles.statsContainer}>
-        <div className={styles.stats}>
-          {stats.map((item, index) => (
-            <AboutStats text={item.text} title={item.title} key={index} />
-          ))}
+    <div className={styles.partnerContainer} ref={containerRef}>
+      <div className={styles.partner}>
+        <motion.h1
+          className={styles.partnerText}
+          style={{
+            scale,
+            opacity,
+            backgroundPosition,
+          }}
+        >
+          Your truste<span ref={dRef}>d</span>&nbsp;partner for secure and
+          interoperable mobile services
+        </motion.h1>
+        <div className={styles.frame}>
+          <img
+            src={`/frames/frame-${String(frame + 1).padStart(3, "0")}.jpg`}
+            style={{
+              transition: "opacity 0.2s",
+            }}
+            alt={`Frame ${frame + 1}`}
+          />
         </div>
+        <motion.div
+          initial={{ visibility: "hidden" }}
+          animate={{ visibility: "visible" }}
+          className={styles.about}
+          style={{
+            opacity: aboutOpacity,
+            y: translateY,
+          }}
+        >
+          <SectionHeader
+            title="About us"
+            text="We offer trusted connectivity solutions to device makers, connectivity providers and IoT players worldwide"
+            buttonText="More about us"
+          />
+          <div className={styles.statsContainer}>
+            <div className={styles.stats}>
+              {stats.map((item, index) => (
+                <AboutStats text={item.text} title={item.title} key={index} />
+              ))}
+            </div>
+          </div>
+        </motion.div>
       </div>
     </div>
   );

@@ -1,8 +1,10 @@
 .solutionContainer {
+  padding-top: 150px;
   & .solutionTextContainer {
     display: flex;
     justify-content: flex-end;
     padding-right: 150px;
+    margin-bottom: 180px;
     & .solutionText {
       color: white;
       display: flex;
@@ -16,9 +18,29 @@
       }
     }
   }
-  & .solutionCards {
-    display: flex;
-    margin-top: 50px;
-    overflow: scroll;
+  & .solutionCardsContainer {
+    height: 400vh;
+    position: relative;
+    & .check {
+      position: sticky;
+      top: 0;
+      overflow: hidden;
+      height: 100vh;
+    }
+
+    & .solutionCards {
+      display: flex;
+      width: 200vw;
+
+      // & > div:nth-child(2) {
+      //   transform: translateY(100px);
+      // }
+      // & > div:nth-child(3) {
+      //   transform: translateY(150px);
+      // }
+      // & > div:nth-child(4) {
+      //   transform: translateY(200px);
+      // }
+    }
   }
 }
