@@ -39,8 +39,8 @@ const About = () => {
     stiffness: 100,
   });
 
-  const scale = useTransform(smoothProgress, [0, 0.6], [1, 40]);
-  const opacity = useTransform(smoothProgress, [0.2, 0.4], [1, 0]);
+  const scale = useTransform(smoothProgress, [0, 0.8], [1, 30]);
+  const opacity = useTransform(smoothProgress, [0.3, 0.8], [1, 0]);
 
   const imageProgress = useTransform(smoothProgress, [0, 0.95, 1], [0, 50, 60]);
   const translateY = useTransform(smoothProgress, [0.8, 1], [100, 0]);
@@ -85,7 +85,8 @@ const About = () => {
           <img
             src={`/frames/frame-${String(frame + 1).padStart(3, "0")}.jpg`}
             style={{
-              transition: "opacity 0.4s",
+              transition: "opacity 0.1s",
+              willChange: "opacity",
             }}
             alt={`Frame ${frame + 1}`}
           />
