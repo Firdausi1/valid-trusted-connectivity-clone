@@ -7,7 +7,7 @@ function App() {
     const preloadImages = () => {
       for (let i = 1; i <= 84; i++) {
         const img = new Image();
-        img.src = `/frames/frame-${String(i).padStart(3, "0")}.jpg`;
+        img.src = `/frames/frame-${String(i).padStart(3, "0")}.webp`;
       }
     };
     preloadImages();
