@@ -44,7 +44,7 @@ const About = () => {
 
   const scale = useTransform(smoothProgress, [0, 0.8], [1, 50]);
   const opacity = useTransform(smoothProgress, [0.3, 0.8], [1, 0]);
-  // const x = useTransform(smoothProgress, [0,0.8],[])
+  const backgroundOpacity = useTransform(smoothProgress, [0.3, 0.35], [0, 1]);
 
   const imageProgress = useTransform(scrollYProgress, [0.35, 1], [0, 84]);
   const translateY = useTransform(smoothProgress, [0.8, 1], [500, 0]);
@@ -99,7 +99,7 @@ const About = () => {
           Your truste<span ref={dRef}>d</span>&nbsp;partner for secure and
           interoperable mobile services
         </motion.h1>
-        <motion.div className={styles.frame}>
+        <motion.div className={styles.frame} style={{opacity: backgroundOpacity}}>
           <motion.img
             initial={{ visibility: "hidden" }}
             animate={{ visibility: "visible" }}
@@ -108,6 +108,7 @@ const About = () => {
               willChange: "opacity",
             }}
             alt={`Frame ${frame + 1}`}
+            transition={{ ease: ["easeIn", "easeOut"] }}
           />
         </motion.div>
         <motion.div
