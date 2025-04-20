@@ -44,8 +44,9 @@ const About = () => {
 
   const scale = useTransform(smoothProgress, [0, 0.8], [1, 50]);
   const opacity = useTransform(smoothProgress, [0.3, 0.8], [1, 0]);
+  // const x = useTransform(smoothProgress, [0,0.8],[])
 
-  const imageProgress = useTransform(smoothProgress, [0.35, 1], [0, 84]);
+  const imageProgress = useTransform(scrollYProgress, [0.35, 1], [0, 84]);
   const translateY = useTransform(smoothProgress, [0.8, 1], [500, 0]);
   const aboutOpacity = useTransform(smoothProgress, [0.8, 1], [0, 1]);
 
@@ -59,16 +60,6 @@ const About = () => {
       }
     });
   }, [imageProgress]);
-
-  // useEffect(() => {
-  //   const preloadImages = () => {
-  //     for (let i = 1; i <= 84; i++) {
-  //       const img = new Image();
-  //       img.src = `/frames/frame-${String(i).padStart(3, "0")}.jpg`;
-  //     }
-  //   };
-  //   preloadImages();
-  // }, []);
 
   if (isMobile) {
     return (
